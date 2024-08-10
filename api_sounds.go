@@ -28,8 +28,8 @@ type SoundsApiService service
 
 /*
 SoundsApiService Get a sound&#39;s details.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param soundId Sound&#39;s id
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param soundId Sound&#39;s id
 
 @return Sound
 */

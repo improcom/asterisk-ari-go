@@ -27,10 +27,8 @@ type RecordingsApiService service
 
 /*
 RecordingsApiService Stop a live recording and discard it.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording
 */
 func (a *RecordingsApiService) Cancel(ctx context.Context, recordingName string) (*http.Response, error) {
 	var (
@@ -95,9 +93,9 @@ func (a *RecordingsApiService) Cancel(ctx context.Context, recordingName string)
 
 /*
 RecordingsApiService Copy a stored recording.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording to copy
- * @param destinationRecordingName The destination name of the recording
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording to copy
+  - @param destinationRecordingName The destination name of the recording
 
 @return StoredRecording
 */
@@ -183,10 +181,8 @@ func (a *RecordingsApiService) CopyStored(ctx context.Context, recordingName str
 
 /*
 RecordingsApiService Delete a stored recording.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording
 */
 func (a *RecordingsApiService) DeleteStored(ctx context.Context, recordingName string) (*http.Response, error) {
 	var (
@@ -251,8 +247,8 @@ func (a *RecordingsApiService) DeleteStored(ctx context.Context, recordingName s
 
 /*
 RecordingsApiService List live recordings.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording
 
 @return LiveRecording
 */
@@ -337,8 +333,8 @@ func (a *RecordingsApiService) GetLive(ctx context.Context, recordingName string
 
 /*
 RecordingsApiService Get a stored recording&#39;s details.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording
 
 @return StoredRecording
 */
@@ -423,8 +419,8 @@ func (a *RecordingsApiService) GetStored(ctx context.Context, recordingName stri
 
 /*
 RecordingsApiService Get the file associated with the stored recording.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording
 
 @return string
 */
@@ -509,7 +505,7 @@ func (a *RecordingsApiService) GetStoredFile(ctx context.Context, recordingName 
 
 /*
 RecordingsApiService List recordings that are complete.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []StoredRecording
 */
@@ -594,10 +590,8 @@ func (a *RecordingsApiService) ListStored(ctx context.Context) ([]StoredRecordin
 /*
 RecordingsApiService Mute a live recording.
 Muting a recording suspends silence detection, which will be restarted when the recording is unmuted.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording
 */
 func (a *RecordingsApiService) Muterecording(ctx context.Context, recordingName string) (*http.Response, error) {
 	var (
@@ -663,10 +657,8 @@ func (a *RecordingsApiService) Muterecording(ctx context.Context, recordingName 
 /*
 RecordingsApiService Pause a live recording.
 Pausing a recording suspends silence detection, which will be restarted when the recording is unpaused. Paused time is not included in the accounting for maxDurationSeconds.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording
 */
 func (a *RecordingsApiService) Pause(ctx context.Context, recordingName string) (*http.Response, error) {
 	var (
@@ -731,10 +723,8 @@ func (a *RecordingsApiService) Pause(ctx context.Context, recordingName string) 
 
 /*
 RecordingsApiService Stop a live recording and store it.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording
 */
 func (a *RecordingsApiService) Stoprecording(ctx context.Context, recordingName string) (*http.Response, error) {
 	var (
@@ -799,10 +789,8 @@ func (a *RecordingsApiService) Stoprecording(ctx context.Context, recordingName 
 
 /*
 RecordingsApiService Unmute a live recording.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording
 */
 func (a *RecordingsApiService) Unmuterecording(ctx context.Context, recordingName string) (*http.Response, error) {
 	var (
@@ -867,10 +855,8 @@ func (a *RecordingsApiService) Unmuterecording(ctx context.Context, recordingNam
 
 /*
 RecordingsApiService Unpause a live recording.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param recordingName The name of the recording
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param recordingName The name of the recording
 */
 func (a *RecordingsApiService) Unpause(ctx context.Context, recordingName string) (*http.Response, error) {
 	var (

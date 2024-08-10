@@ -107,10 +107,8 @@ func (a *ChannelsApiService) AddMoh(ctx context.Context, channelId string, local
 
 /*
 ChannelsApiService Answer a channel.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
 */
 func (a *ChannelsApiService) Answer(ctx context.Context, channelId string) (*http.Response, error) {
 	var (
@@ -397,10 +395,8 @@ func (a *ChannelsApiService) Createchannel(ctx context.Context, endpoint string,
 
 /*
 ChannelsApiService Stop playing music on hold to a channel.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
 */
 func (a *ChannelsApiService) Deletemoh(ctx context.Context, channelId string) (*http.Response, error) {
 	var (
@@ -685,9 +681,9 @@ func (a *ChannelsApiService) ExternalMedia(ctx context.Context, app string, exte
 
 /*
 ChannelsApiService Get the value of a channel variable or function.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
- * @param variable The channel variable or function to get
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
+  - @param variable The channel variable or function to get
 
 @return Variable
 */
@@ -773,8 +769,8 @@ func (a *ChannelsApiService) GetChannelVar(ctx context.Context, channelId string
 
 /*
 ChannelsApiService Channel details.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
 
 @return Channel
 */
@@ -942,10 +938,8 @@ func (a *ChannelsApiService) Hangup(ctx context.Context, channelId string, local
 
 /*
 ChannelsApiService Hold a channel.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
 */
 func (a *ChannelsApiService) Hold(ctx context.Context, channelId string) (*http.Response, error) {
 	var (
@@ -1010,7 +1004,7 @@ func (a *ChannelsApiService) Hold(ctx context.Context, channelId string) (*http.
 
 /*
 ChannelsApiService List all active channels in Asterisk.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Channel
 */
@@ -1921,11 +1915,9 @@ func (a *ChannelsApiService) Recordchannel(ctx context.Context, channelId string
 
 /*
 ChannelsApiService Redirect the channel to a different location.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
- * @param endpoint The endpoint to redirect the channel to
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
+  - @param endpoint The endpoint to redirect the channel to
 */
 func (a *ChannelsApiService) Redirect(ctx context.Context, channelId string, endpoint string) (*http.Response, error) {
 	var (
@@ -1991,10 +1983,8 @@ func (a *ChannelsApiService) Redirect(ctx context.Context, channelId string, end
 
 /*
 ChannelsApiService Indicate ringing to a channel.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
 */
 func (a *ChannelsApiService) Ring(ctx context.Context, channelId string) (*http.Response, error) {
 	var (
@@ -2059,10 +2049,8 @@ func (a *ChannelsApiService) Ring(ctx context.Context, channelId string) (*http.
 
 /*
 ChannelsApiService Stop ringing indication on a channel if locally generated.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
 */
 func (a *ChannelsApiService) RingStop(ctx context.Context, channelId string) (*http.Response, error) {
 	var (
@@ -2127,8 +2115,8 @@ func (a *ChannelsApiService) RingStop(ctx context.Context, channelId string) (*h
 
 /*
 ChannelsApiService RTP stats on a channel.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
 
 @return RtPstat
 */
@@ -2617,10 +2605,8 @@ func (a *ChannelsApiService) SnoopChannelWithId(ctx context.Context, channelId s
 /*
 ChannelsApiService Play silence to a channel.
 Using media operations such as /play on a channel playing silence in this manner will suspend silence without resuming automatically.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
 */
 func (a *ChannelsApiService) StartSilence(ctx context.Context, channelId string) (*http.Response, error) {
 	var (
@@ -2685,10 +2671,8 @@ func (a *ChannelsApiService) StartSilence(ctx context.Context, channelId string)
 
 /*
 ChannelsApiService Stop playing silence to a channel.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
 */
 func (a *ChannelsApiService) StopSilence(ctx context.Context, channelId string) (*http.Response, error) {
 	var (
@@ -2753,10 +2737,8 @@ func (a *ChannelsApiService) StopSilence(ctx context.Context, channelId string) 
 
 /*
 ChannelsApiService Remove a channel from hold.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param channelId Channel&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param channelId Channel&#39;s id
 */
 func (a *ChannelsApiService) Unhold(ctx context.Context, channelId string) (*http.Response, error) {
 	var (

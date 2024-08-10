@@ -28,9 +28,9 @@ type EndpointsApiService service
 
 /*
 EndpointsApiService Details for an endpoint.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param tech Technology of the endpoint
- * @param resource ID of the endpoint
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param tech Technology of the endpoint
+  - @param resource ID of the endpoint
 
 @return Endpoint
 */
@@ -116,8 +116,8 @@ func (a *EndpointsApiService) Getendpoint(ctx context.Context, tech string, reso
 
 /*
 EndpointsApiService List available endoints for a given endpoint technology.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param tech Technology of the endpoints (sip,iax2,...)
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param tech Technology of the endpoints (sip,iax2,...)
 
 @return []Endpoint
 */
@@ -202,7 +202,7 @@ func (a *EndpointsApiService) ListByTech(ctx context.Context, tech string) ([]En
 
 /*
 EndpointsApiService List all endpoints.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Endpoint
 */

@@ -123,10 +123,8 @@ func (a *BridgesApiService) AddChannel(ctx context.Context, bridgeId string, cha
 
 /*
 BridgesApiService Removes any explicit video source in a multi-party mixing bridge. This operation has no effect on bridges with two or fewer participants. When no explicit video source is set, talk detection will be used to determine the active video stream.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param bridgeId Bridge&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bridgeId Bridge&#39;s id
 */
 func (a *BridgesApiService) ClearVideoSource(ctx context.Context, bridgeId string) (*http.Response, error) {
 	var (
@@ -399,10 +397,8 @@ func (a *BridgesApiService) CreateWithId(ctx context.Context, bridgeId string, l
 /*
 BridgesApiService Shut down a bridge.
 If any channels are in this bridge, they will be removed and resume whatever they were doing beforehand.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param bridgeId Bridge&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bridgeId Bridge&#39;s id
 */
 func (a *BridgesApiService) Destroy(ctx context.Context, bridgeId string) (*http.Response, error) {
 	var (
@@ -467,8 +463,8 @@ func (a *BridgesApiService) Destroy(ctx context.Context, bridgeId string) (*http
 
 /*
 BridgesApiService Get bridge details.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param bridgeId Bridge&#39;s id
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bridgeId Bridge&#39;s id
 
 @return Bridge
 */
@@ -553,7 +549,7 @@ func (a *BridgesApiService) Getbridge(ctx context.Context, bridgeId string) (Bri
 
 /*
 BridgesApiService List all active bridges in Asterisk.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Bridge
 */
@@ -983,11 +979,9 @@ func (a *BridgesApiService) Record(ctx context.Context, bridgeId string, name st
 
 /*
 BridgesApiService Remove a channel from a bridge.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param bridgeId Bridge&#39;s id
- * @param channel Ids of channels to remove from bridge
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bridgeId Bridge&#39;s id
+  - @param channel Ids of channels to remove from bridge
 */
 func (a *BridgesApiService) RemoveChannel(ctx context.Context, bridgeId string, channel []string) (*http.Response, error) {
 	var (
@@ -1053,11 +1047,9 @@ func (a *BridgesApiService) RemoveChannel(ctx context.Context, bridgeId string, 
 
 /*
 BridgesApiService Set a channel as the video source in a multi-party mixing bridge. This operation has no effect on bridges with two or fewer participants.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param bridgeId Bridge&#39;s id
- * @param channelId Channel&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bridgeId Bridge&#39;s id
+  - @param channelId Channel&#39;s id
 */
 func (a *BridgesApiService) SetVideoSource(ctx context.Context, bridgeId string, channelId string) (*http.Response, error) {
 	var (
@@ -1202,10 +1194,8 @@ func (a *BridgesApiService) StartMoh(ctx context.Context, bridgeId string, local
 /*
 BridgesApiService Stop playing music on hold to a bridge.
 This will only stop music on hold being played via POST bridges/{bridgeId}/moh.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param bridgeId Bridge&#39;s id
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bridgeId Bridge&#39;s id
 */
 func (a *BridgesApiService) StopMoh(ctx context.Context, bridgeId string) (*http.Response, error) {
 	var (
