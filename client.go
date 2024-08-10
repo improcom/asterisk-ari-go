@@ -66,6 +66,8 @@ type APIClient struct {
 	RecordingsApi *RecordingsApiService
 
 	SoundsApi *SoundsApiService
+
+	WebsocketApi *WebsocketApiService
 }
 
 type service struct {
