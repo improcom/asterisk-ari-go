@@ -14,7 +14,7 @@ Note: Please try to use the latest version of Go.
 
 ## Usage
 After installation, simply import this package and start using it:
-```go
+```
 import "github.com/improcom/asterisk-ari-go"
 ```
 

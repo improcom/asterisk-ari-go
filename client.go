@@ -16,6 +16,8 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
+	"github.com/sirupsen/logrus"
+	"golang.org/x/oauth2"
 	"io"
 	"mime/multipart"
 	"net/http"
@@ -28,8 +30,6 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
-
-	"golang.org/x/oauth2"
 )
 
 var (
@@ -42,6 +42,7 @@ var (
 type APIClient struct {
 	cfg    *Configuration
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
+	logger *logrus.Logger
 
 	// API Services
 
@@ -76,14 +77,24 @@ type service struct {
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *Configuration) *APIClient {
+func NewAPIClient(cfg *Configuration, logger ...*logrus.Logger) *APIClient {
 	if cfg.HTTPClient == nil {
 		cfg.HTTPClient = http.DefaultClient
 	}
 
-	c := &APIClient{}
-	c.cfg = cfg
-	c.common.client = c
+	var l *logrus.Logger
+	if len(logger) > 0 && logger[0] != nil {
+		l = logger[0]
+	} else {
+		l = logrus.New()
+		l.SetOutput(os.Stdout)
+	}
+
+	c := APIClient{
+		cfg:    cfg,
+		logger: l,
+	}
+	c.common.client = &c
 
 	// API Services
 	c.ApplicationsApi = (*ApplicationsApiService)(&c.common)
@@ -97,8 +108,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PlaybacksApi = (*PlaybacksApiService)(&c.common)
 	c.RecordingsApi = (*RecordingsApiService)(&c.common)
 	c.SoundsApi = (*SoundsApiService)(&c.common)
+	c.WebsocketApi = (*WebsocketApiService)(&c.common)
 
-	return c
+	return &c
 }
 
 func atoi(in string) (int, error) {

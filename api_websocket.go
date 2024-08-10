@@ -11,8 +11,10 @@ package asterisk_ari_go
 
 import (
 	"context"
+	"fmt"
 	"github.com/antihax/optional"
-	"io/ioutil"
+	"github.com/gorilla/websocket"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -39,84 +41,45 @@ type WebsocketApiOpts struct {
 	SubscribeAll optional.Bool
 }
 
-func (a *WebsocketApiService) WebsocketConnect(ctx context.Context, app []string, localVarOptionals *EventsApiEventWebsocketOpts) (Message, *http.Response, error) {
-	var (
-		localVarHttpMethod  = strings.ToUpper("Get")
-		localVarPostBody    interface{}
-		localVarFileName    string
-		localVarFileBytes   []byte
-		localVarReturnValue Message
-	)
+func (a *WebsocketApiService) WebsocketConnect(ctx context.Context, app []string, auth []string) (*websocket.Conn, *http.Response, error) {
 
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/events"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	localVarQueryParams.Add("app", parameterToString(app, "multi"))
-	if localVarOptionals != nil && localVarOptionals.SubscribeAll.IsSet() {
-		localVarQueryParams.Add("subscribeAll", parameterToString(localVarOptionals.SubscribeAll.Value(), ""))
-	}
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	// Create the WebSocket URL
+	u := url.URL{
+		Scheme: a.client.cfg.Scheme,
+		Host:   a.client.cfg.Host,
+		Path:   a.client.cfg.BasePath + "/events",
 	}
 
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{}
+	a.client.logger.Debugf("Connecting to WebSocket. URL: %s", u.String())
 
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	// Add query parameters
+	query := u.Query()
+	query.Add("app", strings.Join(app, ","))
+	query.Add("api_key", strings.Join(auth, ","))
+	u.RawQuery = query.Encode()
+
+	// Create WebSocket connection
+	headers := http.Header{}
+	for key, value := range a.client.cfg.DefaultHeader {
+		headers.Add(key, value)
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if a.client.cfg.UserAgent != "" {
+		headers.Set("User-Agent", a.client.cfg.UserAgent)
+	}
+
+	a.client.logger.Debugf("full URL: %s", u.String())
+	a.client.logger.Debugf("headers: %v", headers)
+
+	conn, resp, err := websocket.DefaultDialer.DialContext(ctx, u.String(), headers)
 	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
+		var fullErrorMsg string
+		if resp != nil && resp.Body != nil {
+			body, _ := io.ReadAll(resp.Body)
+			fullErrorMsg = fmt.Sprintf("failed to connect to websocket: %v. Resp: %v", err, string(body))
+			return nil, resp, fmt.Errorf(fullErrorMsg)
 		}
-
-		if localVarHttpResponse.StatusCode == 200 {
-			var v Message
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
-		}
-
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return nil, resp, err
 	}
 
-	return localVarReturnValue, localVarHttpResponse, nil
+	return conn, resp, nil
 }
