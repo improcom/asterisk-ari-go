@@ -12,12 +12,12 @@ package asterisk_ari_go
 import (
 	"context"
 	"fmt"
-	"github.com/antihax/optional"
 	"github.com/gorilla/websocket"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 // Linger please
@@ -37,8 +37,39 @@ WebsocketApiService WebSocket connection for events.
 @return Message
 */
 
-type WebsocketApiOpts struct {
-	SubscribeAll optional.Bool
+type StasisEvent struct {
+	Application string               `json:"application"`
+	Args        []string             `json:"args,omitempty"`
+	AsteriskID  string               `json:"asterisk_id"`
+	Channel     Channel              `json:"channel"`
+	Timestamp   StasisTimestampEvent `json:"timestamp"`
+	Type        string               `json:"type"`
+	Value       string               `json:"value,omitempty"`
+	Variable    string               `json:"variable,omitempty"`
+}
+
+type StasisTimestampEvent struct {
+	Timestamp time.Time `json:"timestamp"`
+}
+
+const eventTimeLayout = "2006-01-02T15:04:05.000-0700"
+
+// UnmarshalJSON
+// custom parsing for the timestamp
+func (s *StasisTimestampEvent) UnmarshalJSON(b []byte) error {
+	// Remove the surrounding quotes
+	timestampStr := string(b)
+	timestampStr = timestampStr[1 : len(timestampStr)-1]
+
+	// Parse the timestamp
+	parsedTime, err := time.Parse(eventTimeLayout, timestampStr)
+	if err != nil {
+		return err
+	}
+
+	// Assign the parsed time to the Timestamp field
+	s.Timestamp = parsedTime
+	return nil
 }
 
 func (a *WebsocketApiService) WebsocketConnect(ctx context.Context, app []string, auth []string) (*websocket.Conn, *http.Response, error) {

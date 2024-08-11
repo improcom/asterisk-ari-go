@@ -313,6 +313,11 @@ func (c *APIClient) prepareRequest(
 	// Override request host, if applicable
 	if c.cfg.Host != "" {
 		localVarRequest.Host = c.cfg.Host
+		localVarRequest.URL.Host = c.cfg.Host //doesn't work without it for some reason
+	}
+	// Override request host, if applicable
+	if c.cfg.Scheme != "" {
+		localVarRequest.URL.Scheme = c.cfg.Scheme
 	}
 
 	// Add the user agent to the request.
