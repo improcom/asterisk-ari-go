@@ -27,8 +27,10 @@ type DeviceStatesApiService service
 
 /*
 DeviceStatesApiService Destroy a device-state controlled by ARI.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param deviceName Name of the device
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param deviceName Name of the device
+
+
 */
 func (a *DeviceStatesApiService) Delete(ctx context.Context, deviceName string) (*http.Response, error) {
 	var (
@@ -93,8 +95,8 @@ func (a *DeviceStatesApiService) Delete(ctx context.Context, deviceName string) 
 
 /*
 DeviceStatesApiService Retrieve the current state of a device.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param deviceName Name of the device
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param deviceName Name of the device
 
 @return DeviceState
 */
@@ -179,7 +181,7 @@ func (a *DeviceStatesApiService) Getdevicestate(ctx context.Context, deviceName 
 
 /*
 DeviceStatesApiService List all ARI controlled device states.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []DeviceState
 */
@@ -263,9 +265,11 @@ func (a *DeviceStatesApiService) ListDeviceStates(ctx context.Context) ([]Device
 
 /*
 DeviceStatesApiService Change the state of a device controlled by ARI. (Note - implicitly creates the device state).
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param deviceName Name of the device
-  - @param deviceState Device state value
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param deviceName Name of the device
+ * @param deviceState Device state value
+
+
 */
 func (a *DeviceStatesApiService) Update(ctx context.Context, deviceName string, deviceState string) (*http.Response, error) {
 	var (

@@ -27,9 +27,11 @@ type PlaybacksApiService service
 
 /*
 PlaybacksApiService Control a playback.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param playbackId Playback&#39;s id
-  - @param operation Operation to perform on the playback.
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param playbackId Playback&#39;s id
+ * @param operation Operation to perform on the playback.
+
+
 */
 func (a *PlaybacksApiService) Control(ctx context.Context, playbackId string, operation string) (*http.Response, error) {
 	var (
@@ -95,8 +97,8 @@ func (a *PlaybacksApiService) Control(ctx context.Context, playbackId string, op
 
 /*
 PlaybacksApiService Get a playback&#39;s details.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param playbackId Playback&#39;s id
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param playbackId Playback&#39;s id
 
 @return Playback
 */
@@ -181,8 +183,10 @@ func (a *PlaybacksApiService) Getplayback(ctx context.Context, playbackId string
 
 /*
 PlaybacksApiService Stop a playback.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param playbackId Playback&#39;s id
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param playbackId Playback&#39;s id
+
+
 */
 func (a *PlaybacksApiService) Stop(ctx context.Context, playbackId string) (*http.Response, error) {
 	var (

@@ -27,8 +27,10 @@ type MailboxesApiService service
 
 /*
 MailboxesApiService Destroy a mailbox.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param mailboxName Name of the mailbox
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param mailboxName Name of the mailbox
+
+
 */
 func (a *MailboxesApiService) Deletemailbox(ctx context.Context, mailboxName string) (*http.Response, error) {
 	var (
@@ -93,8 +95,8 @@ func (a *MailboxesApiService) Deletemailbox(ctx context.Context, mailboxName str
 
 /*
 MailboxesApiService Retrieve the current state of a mailbox.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param mailboxName Name of the mailbox
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param mailboxName Name of the mailbox
 
 @return Mailbox
 */
@@ -179,7 +181,7 @@ func (a *MailboxesApiService) Getmailbox(ctx context.Context, mailboxName string
 
 /*
 MailboxesApiService List all mailboxes.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Mailbox
 */
@@ -263,10 +265,12 @@ func (a *MailboxesApiService) Listmailboxes(ctx context.Context) ([]Mailbox, *ht
 
 /*
 MailboxesApiService Change the state of a mailbox. (Note - implicitly creates the mailbox).
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param mailboxName Name of the mailbox
-  - @param oldMessages Count of old messages in the mailbox
-  - @param newMessages Count of new messages in the mailbox
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param mailboxName Name of the mailbox
+ * @param oldMessages Count of old messages in the mailbox
+ * @param newMessages Count of new messages in the mailbox
+
+
 */
 func (a *MailboxesApiService) Updatemailbox(ctx context.Context, mailboxName string, oldMessages int32, newMessages int32) (*http.Response, error) {
 	var (

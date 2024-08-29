@@ -28,9 +28,9 @@ type AsteriskApiService service
 
 /*
 AddLog Adds a log channel.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param logChannelName The log channel to add
-  - @param configuration levels of the log channel
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param logChannelName The log channel to add
+ * @param configuration levels of the log channel
 */
 func (a *AsteriskApiService) AddLog(ctx context.Context, logChannelName string, configuration string) (*http.Response, error) {
 	var (
@@ -96,8 +96,8 @@ func (a *AsteriskApiService) AddLog(ctx context.Context, logChannelName string, 
 
 /*
 DeleteLog Deletes a log channel.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param logChannelName Log channels name
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param logChannelName Log channels name
 */
 func (a *AsteriskApiService) DeleteLog(ctx context.Context, logChannelName string) (*http.Response, error) {
 	var (
@@ -162,10 +162,10 @@ func (a *AsteriskApiService) DeleteLog(ctx context.Context, logChannelName strin
 
 /*
 DeleteObject Delete a dynamic configuration object.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param configClass The configuration class containing dynamic configuration objects.
-  - @param objectType The type of configuration object to delete.
-  - @param id The unique identifier of the object to delete.
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param configClass The configuration class containing dynamic configuration objects.
+ * @param objectType The type of configuration object to delete.
+ * @param id The unique identifier of the object to delete.
 */
 func (a *AsteriskApiService) DeleteObject(ctx context.Context, configClass string, objectType string, id string) (*http.Response, error) {
 	var (
@@ -232,8 +232,8 @@ func (a *AsteriskApiService) DeleteObject(ctx context.Context, configClass strin
 
 /*
 GetGlobalVar Get the value of a global variable.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param variable The variable to get
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param variable The variable to get
 
 @return Variable
 */
@@ -412,8 +412,8 @@ func (a *AsteriskApiService) GetInfo(ctx context.Context, localVarOptionals *Ast
 
 /*
 GetModule Get Asterisk module information.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param moduleName Module&#39;s name
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param moduleName Module&#39;s name
 
 @return Module
 */
@@ -498,10 +498,10 @@ func (a *AsteriskApiService) GetModule(ctx context.Context, moduleName string) (
 
 /*
 GetObject Retrieve a dynamic configuration object.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param configClass The configuration class containing dynamic configuration objects.
-  - @param objectType The type of configuration object to retrieve.
-  - @param id The unique identifier of the object to retrieve.
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param configClass The configuration class containing dynamic configuration objects.
+ * @param objectType The type of configuration object to retrieve.
+ * @param id The unique identifier of the object to retrieve.
 
 @return []ConfigTuple
 */
@@ -588,7 +588,7 @@ func (a *AsteriskApiService) GetObject(ctx context.Context, configClass string, 
 
 /*
 ListLogChannels Gets Asterisk log channel information.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []LogChannel
 */
@@ -672,7 +672,7 @@ func (a *AsteriskApiService) ListLogChannels(ctx context.Context) ([]LogChannel,
 
 /*
 ListModules List Asterisk modules.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Module
 */
@@ -756,8 +756,10 @@ func (a *AsteriskApiService) ListModules(ctx context.Context) ([]Module, *http.R
 
 /*
 LoadModule Load an Asterisk module.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param moduleName Module&#39;s name
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param moduleName Module&#39;s name
+
+
 */
 func (a *AsteriskApiService) LoadModule(ctx context.Context, moduleName string) (*http.Response, error) {
 	var (
@@ -822,7 +824,7 @@ func (a *AsteriskApiService) LoadModule(ctx context.Context, moduleName string) 
 
 /*
 Ping Response pong message.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return AsteriskPing
 */
@@ -906,8 +908,10 @@ func (a *AsteriskApiService) Ping(ctx context.Context) (AsteriskPing, *http.Resp
 
 /*
 ReloadModule Reload an Asterisk module.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param moduleName Module&#39;s name
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param moduleName Module&#39;s name
+
+
 */
 func (a *AsteriskApiService) ReloadModule(ctx context.Context, moduleName string) (*http.Response, error) {
 	var (
@@ -972,8 +976,10 @@ func (a *AsteriskApiService) ReloadModule(ctx context.Context, moduleName string
 
 /*
 RotateLog Rotates a log channel.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param logChannelName Log channel&#39;s name
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param logChannelName Log channel&#39;s name
+
+
 */
 func (a *AsteriskApiService) RotateLog(ctx context.Context, logChannelName string) (*http.Response, error) {
 	var (
@@ -1116,8 +1122,10 @@ func (a *AsteriskApiService) SetGlobalVar(ctx context.Context, variable string, 
 
 /*
 UnloadModule Unload an Asterisk module.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param moduleName Module&#39;s name
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param moduleName Module&#39;s name
+
+
 */
 func (a *AsteriskApiService) UnloadModule(ctx context.Context, moduleName string) (*http.Response, error) {
 	var (

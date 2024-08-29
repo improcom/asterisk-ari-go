@@ -1,12 +1,3 @@
-/*
- * Copyright (C) 2022 Quintex Software Solutions Pvt. Ltd. - All Rights Reserved.
- *
- * You may use, distribute and modify this code under the terms of the Apache
- * License Version 2.0. You should have received a copy of the license with this file.
- * If not, please write to : opensource@quintexsoftware.com
- *
- */
-
 package asterisk_ari_go
 
 import (
@@ -25,6 +16,7 @@ var (
 	_ context.Context
 )
 
+// WebsocketApiService represents a service for managing WebSocket connections.
 type WebsocketApiService service
 
 /*
@@ -37,25 +29,27 @@ WebsocketApiService WebSocket connection for events.
 @return Message
 */
 
+// StasisEvent represents an event in the Stasis application.
 type StasisEvent struct {
-	Application string               `json:"application"`
-	Args        []string             `json:"args,omitempty"`
-	AsteriskID  string               `json:"asterisk_id"`
-	Channel     Channel              `json:"channel"`
-	Timestamp   StasisTimestampEvent `json:"timestamp"`
-	Type        string               `json:"type"`
-	Value       string               `json:"value,omitempty"`
-	Variable    string               `json:"variable,omitempty"`
+	Application string               `json:"application"`        // Application name
+	Args        []string             `json:"args,omitempty"`     // Optional arguments
+	AsteriskID  string               `json:"asterisk_id"`        // Asterisk instance ID
+	Channel     Channel              `json:"channel"`            // Channel information
+	Timestamp   StasisTimestampEvent `json:"timestamp"`          // Event timestamp
+	Type        string               `json:"type"`               // Event type
+	Value       string               `json:"value,omitempty"`    // Optional value
+	Variable    string               `json:"variable,omitempty"` // Optional variable
 }
 
+// StasisTimestampEvent represents a timestamp for a Stasis event.
 type StasisTimestampEvent struct {
-	Timestamp time.Time `json:"timestamp"`
+	Timestamp time.Time `json:"timestamp"` // Timestamp of the event
 }
 
 const eventTimeLayout = "2006-01-02T15:04:05.000-0700"
 
-// UnmarshalJSON
-// custom parsing for the timestamp
+// UnmarshalJSON custom parsing for the timestamp
+// UnmarshalJSON parses the JSON-encoded data and stores the result in the value pointed to by s.
 func (s *StasisTimestampEvent) UnmarshalJSON(b []byte) error {
 	// Remove the surrounding quotes
 	timestampStr := string(b)
@@ -72,6 +66,13 @@ func (s *StasisTimestampEvent) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// WebsocketConnect establishes a WebSocket connection for events.
+// @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc.
+// @param app []string - Applications to subscribe to.
+// @param auth []string - Authentication credentials.
+// @return *websocket.Conn - WebSocket connection.
+// @return *http.Response - HTTP response.
+// @return error - Error, if any.
 func (a *WebsocketApiService) WebsocketConnect(ctx context.Context, app []string, auth []string) (*websocket.Conn, *http.Response, error) {
 
 	// Create the WebSocket URL

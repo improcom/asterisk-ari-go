@@ -127,8 +127,8 @@ func (a *ApplicationsApiService) Filter(ctx context.Context, applicationName str
 
 /*
 ApplicationsApiService Get details of an application.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param applicationName Application&#39;s name
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param applicationName Application&#39;s name
 
 @return Application
 */
@@ -213,7 +213,7 @@ func (a *ApplicationsApiService) Get(ctx context.Context, applicationName string
 
 /*
 ApplicationsApiService List all applications.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []Application
 */
@@ -298,9 +298,9 @@ func (a *ApplicationsApiService) List(ctx context.Context) ([]Application, *http
 /*
 ApplicationsApiService Subscribe an application to a event source.
 Returns the state of the application after the subscriptions have changed
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param applicationName Application&#39;s name
-  - @param eventSource URI for event source (channel:{channelId}, bridge:{bridgeId}, endpoint:{tech}[/{resource}], deviceState:{deviceName}
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param applicationName Application&#39;s name
+ * @param eventSource URI for event source (channel:{channelId}, bridge:{bridgeId}, endpoint:{tech}[/{resource}], deviceState:{deviceName}
 
 @return Application
 */
@@ -387,9 +387,9 @@ func (a *ApplicationsApiService) Subscribe(ctx context.Context, applicationName 
 /*
 ApplicationsApiService Unsubscribe an application from an event source.
 Returns the state of the application after the subscriptions have changed
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param applicationName Application&#39;s name
-  - @param eventSource URI for event source (channel:{channelId}, bridge:{bridgeId}, endpoint:{tech}[/{resource}], deviceState:{deviceName}
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param applicationName Application&#39;s name
+ * @param eventSource URI for event source (channel:{channelId}, bridge:{bridgeId}, endpoint:{tech}[/{resource}], deviceState:{deviceName}
 
 @return Application
 */
