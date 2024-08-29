@@ -1,0 +1,4 @@
+exten => s,1,NoOp()
+same => n,Answer()
+same => n,Stasis(hello-world)
+same => n,Hangup()

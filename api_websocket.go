@@ -82,7 +82,7 @@ func (a *WebsocketApiService) WebsocketConnect(ctx context.Context, app []string
 		Path:   a.client.cfg.BasePath + "/events",
 	}
 
-	a.client.logger.Debugf("Connecting to WebSocket. URL: %s", u.String())
+	//a.client.logger.Debugf("connecting to WebSocket. URL: %s", u.String())
 
 	// Add query parameters
 	query := u.Query()
@@ -99,8 +99,8 @@ func (a *WebsocketApiService) WebsocketConnect(ctx context.Context, app []string
 		headers.Set("User-Agent", a.client.cfg.UserAgent)
 	}
 
-	a.client.logger.Debugf("full URL: %s", u.String())
-	a.client.logger.Debugf("headers: %v", headers)
+	//a.client.logger.Debugf("full URL: %s", u.String())
+	//a.client.logger.Debugf("headers: %v", headers)
 
 	conn, resp, err := websocket.DefaultDialer.DialContext(ctx, u.String(), headers)
 	if err != nil {
